@@ -49,8 +49,8 @@ function GradientIcon({ icon: Icon, size = 28, className = "" }) {
 function SectionHeading({ children, eyebrow }) {
   return (
     <div className="mb-5 md:mb-8">
-      {eyebrow && <p className="text-xs font-semibold uppercase tracking-widest text-[#3AB257] mb-2">{eyebrow}</p>}
-      <h2 className="text-lg md:text-3xl font-bold text-[#293E52]">{children}</h2>
+      {eyebrow && <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#3AB257] sm:text-sm">{eyebrow}</p>}
+      <h2 className="text-xl font-bold text-[#293E52] sm:text-2xl md:text-3xl">{children}</h2>
     </div>
   )
 }
@@ -65,7 +65,7 @@ function Photo({ src, alt, className = "", caption }) {
         loading="lazy"
         className={`block w-full rounded-lg ${hasFit ? "" : "object-cover"} ${className}`.trim()}
       />
-      {caption && <figcaption className="mt-2 text-center text-xs font-medium text-[#293E52]/80">{caption}</figcaption>}
+      {caption && <figcaption className="mt-2 text-center text-xs font-medium text-[#293E52]/80 sm:text-sm">{caption}</figcaption>}
     </figure>
   )
 }
@@ -75,9 +75,9 @@ function CopyBlock({ title, children, icon }) {
     <div className="space-y-2 border-b border-[#CDCDCD] pb-4 last:border-b-0">
       <div className="flex items-center gap-3">
         {icon && <GradientIcon icon={icon} size={28} />}
-        <h3 className="text-sm md:text-lg font-semibold text-[#293E52]">{title}</h3>
+        <h3 className="text-base font-semibold text-[#293E52] sm:text-lg">{title}</h3>
       </div>
-      <p className="text-sm md:text-base text-[#293E52]/80 leading-relaxed">{children}</p>
+      <p className="text-sm leading-relaxed text-[#293E52]/80 sm:text-base">{children}</p>
     </div>
   )
 }
@@ -102,12 +102,12 @@ function StatGrid({ items, columns = 3 }) {
   return (
     <div className={`grid grid-cols-2 ${columns === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"} gap-3 md:gap-5`}>
       {items.map((item, index) => (
-        <div key={index} className="rounded-lg border border-[#CDCDCD] p-4 md:p-5 text-center">
+        <div key={index} className="rounded-lg border border-[#CDCDCD] p-4 text-center md:p-5">
           <div className="flex items-center justify-center gap-2">
             {item.icon && <GradientIcon icon={item.icon} size={26} />}
-            <span className="text-xl md:text-3xl font-bold text-[#3AB257]">{item.value}</span>
+            <span className="text-2xl font-bold text-[#3AB257] md:text-3xl">{item.value}</span>
           </div>
-          <p className="text-xs md:text-sm mt-2 text-[#293E52] font-medium">{item.label}</p>
+          <p className="mt-2 text-xs font-medium text-[#293E52] sm:text-sm">{item.label}</p>
         </div>
       ))}
     </div>
@@ -190,8 +190,8 @@ function HoistCard({ hoist }) {
     <article className="overflow-hidden rounded-lg border border-[#CDCDCD] bg-white">
       <Photo src={hoist.photo} alt={`${hoist.model} lifting hoist operating on a wind turbine`} className="h-52 sm:h-64 w-full object-cover" />
       <div className="p-4 md:p-5">
-        <h3 className="text-lg md:text-2xl font-bold text-[#293E52] mb-1">{hoist.model}</h3>
-        <p className="text-sm text-[#293E52]/80 mb-4">{hoist.model} Lifting Hoist</p>
+        <h3 className="mb-1 text-lg font-bold text-[#293E52] sm:text-xl md:text-2xl">{hoist.model}</h3>
+        <p className="mb-4 text-sm text-[#293E52]/80 sm:text-base">{hoist.model} Lifting Hoist</p>
         <div className="grid grid-cols-2 gap-3">
           {[
             ["Safe Working Load", hoist.capacity, Weight],
@@ -200,11 +200,11 @@ function HoistCard({ hoist }) {
             ["Max Working Height", hoist.height, MoveVertical],
           ].map(([label, value, Icon]) => (
             <div key={label} className="rounded-lg bg-[#F5F5F5] px-3 py-3">
-              <div className="flex items-center gap-2 mb-2">
+              <div className="mb-2 flex items-center gap-2">
                 <GradientIcon icon={Icon} size={22} />
-                <p className="text-xs text-[#293E52]/70">{label}</p>
+                <p className="text-xs text-[#293E52]/70 sm:text-sm">{label}</p>
               </div>
-              <p className="text-sm md:text-base font-bold text-[#293E52] mt-1">{value}</p>
+              <p className="mt-1 text-sm font-bold text-[#293E52] sm:text-base">{value}</p>
             </div>
           ))}
         </div>
@@ -221,7 +221,7 @@ function Gallery({ title, items }) {
         {items.map((item) => (
           <div key={item.caption} className="space-y-3">
             <Photo src={item.src} alt={item.caption} className="h-56 md:h-72 w-full object-cover" />
-            <p className="text-sm md:text-base font-semibold text-[#293E52] text-center">{item.caption}</p>
+            <p className="text-center text-sm font-semibold text-[#293E52] sm:text-base">{item.caption}</p>
           </div>
         ))}
       </div>
@@ -255,16 +255,16 @@ function ReferenceDiagram({ title, image, alt, note }) {
   return (
     <section className="md:mb-16 mb-8">
       <SectionHeading>{title}</SectionHeading>
-      <p className="text-sm md:text-base text-[#293E52]/80 leading-relaxed mb-4">{note}</p>
+      <p className="mb-4 text-sm leading-relaxed text-[#293E52]/80 sm:text-base">{note}</p>
       <div className="rounded-lg border border-[#CDCDCD] p-3 md:p-6 bg-white">
         <img src={`${IMG}${image}`} alt={alt} loading="lazy" className="mx-auto block w-full h-auto object-contain max-h-[620px]" />
       </div>
       <button type="button" onClick={() => setExpanded(!expanded)} aria-expanded={expanded}
-        className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#3AB257] hover:underline">
+        className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#3AB257] hover:underline sm:text-base">
         {expanded ? "Hide diagram details" : "View diagram details"}
         <ChevronDown size={18} className={expanded ? "rotate-180" : ""} />
       </button>
-      {expanded && <p className="mt-3 text-sm text-[#293E52]/80 leading-relaxed">{alt}. The colour-coded components and model-level compatibility shown in the original brochure artwork have been retained in this diagram.</p>}
+      {expanded && <p className="mt-3 text-sm leading-relaxed text-[#293E52]/80 sm:text-base">{alt}. The colour-coded components and model-level compatibility shown in the original brochure artwork have been retained in this diagram.</p>}
     </section>
   )
 }
@@ -276,15 +276,15 @@ function DLIServicePages() {
       <section className="md:mb-16 mb-8">
         <SectionHeading>Lifting Technology</SectionHeading>
         <div className="grid gap-4 md:grid-cols-3 md:gap-6">
-          {liftingMethods.map((method) => (
+            {liftingMethods.map((method) => (
             <article key={method.title} className="flex h-full flex-col rounded-lg border border-[#329ACD]/20 bg-gradient-to-br from-[#EEF7FC] to-[#EDF9F1] p-5 shadow-sm transition-shadow hover:shadow-md md:p-6">
               <div className="mb-4 flex items-center gap-3">
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-[#329ACD]/20">
                   <GradientIcon icon={method.icon} size={26} />
                 </span>
-                <h3 className="text-base font-semibold text-[#293E52] md:text-lg">{method.title}</h3>
+                <h3 className="text-base font-semibold text-[#293E52] sm:text-lg">{method.title}</h3>
               </div>
-              <p className="text-sm leading-relaxed text-[#293E52]/80 md:text-base">{method.description}</p>
+              <p className="text-sm leading-relaxed text-[#293E52]/80 sm:text-base">{method.description}</p>
             </article>
           ))}
         </div>
@@ -294,9 +294,9 @@ function DLIServicePages() {
       <section className="md:mb-16 mb-8">
         <div className="grid items-center gap-6 rounded-xl border border-[#CDCDCD] bg-gradient-to-r from-[#F3F9FC] to-white p-5 md:grid-cols-2 md:gap-8 md:p-8 lg:p-10">
           <div>
-            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#3AB257]">Introduced in 2024</p>
-            <h2 className="mb-4 text-lg font-bold text-[#293E52] md:text-3xl">DLI BeeMa Lifting Hoist</h2>
-            <p className="text-sm leading-relaxed text-[#293E52]/80 md:text-base lg:text-lg">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#3AB257] sm:text-sm">Introduced in 2024</p>
+            <h2 className="mb-4 text-xl font-bold text-[#293E52] sm:text-2xl md:text-3xl">DLI BeeMa Lifting Hoist</h2>
+            <p className="text-sm leading-relaxed text-[#293E52]/80 sm:text-base lg:text-lg">
               2024 marked a major milestone for DLI, as years of rigorous testing, engineering refinement, and field validation led to the launch of its breakthrough Derrick Lifter crane system. This technology is designed to transform major component replacement in the wind energy sector.
             </p>
           </div>
@@ -323,9 +323,9 @@ function DLIServicePages() {
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-[#CDCDCD]/60">
                     <GradientIcon icon={item.icon} size={22} />
                   </span>
-                  <h3 className="text-sm font-semibold text-[#293E52] md:text-lg">{item.title}</h3>
+                  <h3 className="text-base font-semibold text-[#293E52] sm:text-lg">{item.title}</h3>
                 </div>
-                <p className="pl-3 text-sm leading-relaxed text-[#293E52]/80 md:text-base">{item.description}</p>
+                <p className="pl-3 text-sm leading-relaxed text-[#293E52]/80 sm:text-base">{item.description}</p>
               </div>
             ))}
           </div>
@@ -374,9 +374,9 @@ function DLIServicePages() {
               <div key={item.title} className="rounded-lg border border-[#CDCDCD] bg-white p-4 md:p-5">
                 <div className="mb-3 flex items-center gap-3">
                   <GradientIcon icon={item.icon} size={28} />
-                  <h3 className="text-sm font-semibold text-[#293E52] md:text-lg">{item.title}</h3>
+                  <h3 className="text-base font-semibold text-[#293E52] sm:text-lg">{item.title}</h3>
                 </div>
-                <p className="text-sm leading-relaxed text-[#293E52]/80 md:text-base">{item.description}</p>
+                <p className="text-sm leading-relaxed text-[#293E52]/80 sm:text-base">{item.description}</p>
               </div>
             ))}
           </div>
@@ -392,7 +392,7 @@ function DLIServicePages() {
       {/* BROCHURE PAGES 12 & 13: Four equipment variants */}
       <section className="md:mb-16 mb-8">
         <SectionHeading>BeeMa Lifting Hoist Models</SectionHeading>
-        <p className="text-sm md:text-base text-[#293E52]/80 mb-6">Explore the BeeMa 30T, 20T, 10T, and 6T lifting hoist models and their working specifications.</p>
+        <p className="mb-6 text-sm text-[#293E52]/80 sm:text-base">Explore the BeeMa 30T, 20T, 10T, and 6T lifting hoist models and their working specifications.</p>
         <div className="grid md:grid-cols-2 gap-5 md:gap-8">
           {hoists.map((hoist) => <HoistCard key={hoist.model} hoist={hoist} />)}
         </div>
@@ -401,7 +401,7 @@ function DLIServicePages() {
       {/* BROCHURE PAGE 14: Craneless MCR and track record */}
       <section className="md:mb-16 mb-8">
         <SectionHeading>Craneless Lifting</SectionHeading>
-        <p className="text-sm md:text-base lg:text-lg text-[#293E52]/80 leading-relaxed max-w-5xl mb-6">
+        <p className="mb-6 max-w-5xl text-sm leading-relaxed text-[#293E52]/80 sm:text-base lg:text-lg">
           Speed Team introduced crane-less major component replacement (MCR) technology in 2011. What began with smaller 225 kW turbines evolved into a solution for modern multi-MW wind turbine generators, reducing operational costs and downtime while supporting more than a decade of field operations.
         </p>
         <StatGrid items={achievements} />
@@ -446,14 +446,14 @@ function DLIServicePages() {
               loading="lazy"
               className="block h-[320px] w-full rounded-lg object-cover sm:h-[400px] md:h-[520px] lg:h-[560px]"
             />
-            <figcaption className="mt-2 text-center text-xs font-medium text-[#293E52]/80">Rotor De & Re-Erection</figcaption>
+            <figcaption className="mt-2 text-center text-xs font-medium text-[#293E52]/80 sm:text-sm">Rotor De & Re-Erection</figcaption>
           </figure>
           <div>
-            <p className="mb-6 text-sm leading-relaxed text-[#293E52]/80 md:text-base">
+            <p className="mb-6 text-sm leading-relaxed text-[#293E52]/80 sm:text-base">
               Conventional cranes are used to replace major failed components, following an approach similar to turbine installation for safe and efficient execution. DLI partners with established crane service providers across India for dependable and timely replacement solutions.
             </p>
             <StatGrid items={craneAchievements} />
-            <h3 className="mb-3 mt-8 text-lg font-bold text-[#293E52] md:text-xl">Specialized Recovery Capabilities</h3>
+            <h3 className="mb-3 mt-8 text-lg font-bold text-[#293E52] sm:text-xl md:text-2xl">Specialized Recovery Capabilities</h3>
             <ul className="grid gap-3 sm:grid-cols-2">
               {[
                 { label: "Damaged rotor and blade replacement", icon: Wind },
@@ -463,7 +463,7 @@ function DLIServicePages() {
                 { label: "Handling main bearing exchange", icon: Cog },
                 { label: "Rotor and unbalanced rotor handling", icon: Wrench },
               ].map((item) => (
-                <li key={item.label} className="flex items-start gap-2 border-b border-[#CDCDCD] pb-3 text-sm text-[#293E52]/80">
+                <li key={item.label} className="flex items-start gap-2 border-b border-[#CDCDCD] pb-3 text-sm text-[#293E52]/80 sm:text-base">
                   <GradientIcon icon={item.icon} size={24} className="mt-0.5" />
                   <span>{item.label}</span>
                 </li>
