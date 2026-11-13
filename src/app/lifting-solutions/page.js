@@ -1,15 +1,12 @@
 
-import DifferentiatingFactor from "@/components/Factors";
+import LiftingTechnology from "@/components/Liftingtechnology";
 import InnerBanner from "@/components/Inner-Banner";
 
-
-export default function ChooseSection() {
+export default function LiftingSolutionsPage() {
   return (
-<>
-
-<InnerBanner title="Why DLI?" bgImage="/images/choose-bg.svg" />
-
-<DifferentiatingFactor />
-</>
+    <>
+      <InnerBanner title="Lifting Technology" bgImage="/images/choose-bg.svg" />
+      <LiftingTechnology />
+    </>
   );
 }
