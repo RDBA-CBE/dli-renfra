@@ -1,30 +1,39 @@
+
 "use client"
 
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, Menu, X } from "lucide-react"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [activeDropdown, setActiveDropdown] = useState(null)
+  const [mobileDropdown, setMobileDropdown] = useState(null)
+
   const pathname = usePathname()
 
   const navItems = [
     { label: "Home", href: "/" },
-    { label: "About Us", href: "/about" },
+    {
+      label: "About Us",
+      dropdown: [
+        { label: "About DLI", href: "/about" },
+        { label: "Infrastructure", href: "/infrastructure-facilities" },
+        { label: "Sustainability", href: "/sustainability" },
+      ],
+    },
     {
       label: "Technologies & Crane",
-      href: "",
       dropdown: [
         { label: "Technologies", href: "/technologies" },
         { label: "Crane Models", href: "/crane-models" },
       ],
     },
-     { label: "Why DLI", href: "/why-dli" },
-     { label: "Solutions", href: "/solutions" },
-     { label: "Lifting Solutions", href: "/lifting-solutions" },
+    { label: "Why DLI", href: "/why-dli" },
+    { label: "Solutions", href: "/solutions" },
+    { label: "Lifting Technology", href: "/lifting-solutions" },
     { label: "Projects", href: "/projects" },
     { label: "IMS @ DLI", href: "/ims@dli" },
     { label: "News & Media", href: "/news" },
@@ -32,71 +41,109 @@ export function Navbar() {
     { label: "Corporate", href: "/corporate" },
   ]
 
-  const isActive = (href) => pathname === href
+  const isActive = (item) => {
+    if (item.dropdown) {
+      return item.dropdown.some((subItem) => pathname === subItem.href)
+    }
+
+    return pathname === item.href
+  }
+
+  const activeClass =
+    "font-bold bg-gradient-to-r from-[#3AB257] to-[#329ACD] bg-clip-text text-transparent"
+
+  const inactiveClass =
+    "text-[#293E52] hover:text-teal-600 font-medium"
+
+  const closeMobileMenu = () => {
+    setIsOpen(false)
+    setMobileDropdown(null)
+  }
 
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 xl:px-8">
         <div className="flex justify-between items-center h-20">
+
           {/* Logo */}
-          <div>
-            <Link href="/" className="flex items-center gap-2">
-              <Image
-                src="/images/logo-new.svg"
-                alt="Dli Logo"
-                width={120}
-                height={50}
-                className="object-contain"
-                priority
-              />
-            </Link>
-          </div>
+          <Link href="/" className="flex items-center gap-2">
+            <Image
+              src="/images/logo-new.svg"
+              alt="DLI Logo"
+              width={120}
+              height={50}
+              className="object-contain"
+              priority
+            />
+          </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center gap-6 relative">
+          <div className="hidden xl:flex items-center gap-6">
             {navItems.map((item) => (
-              <div key={item.label} className="relative group">
-                <div
-                  className="flex items-center gap-1 cursor-pointer"
-                  onMouseEnter={() => item.dropdown && setIsDropdownOpen(true)}
-                  onMouseLeave={() => item.dropdown && setIsDropdownOpen(false)}
-                >
+              <div
+                key={item.label}
+                className="relative h-20 flex items-center"
+                onMouseEnter={() => {
+                  setActiveDropdown(item.dropdown ? item.label : null)
+                }}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+
+                {item.dropdown ? (
+                  <button
+                    type="button"
+                    aria-expanded={activeDropdown === item.label}
+                    aria-haspopup="true"
+                    onClick={() =>
+                      setActiveDropdown(
+                        activeDropdown === item.label ? null : item.label
+                      )
+                    }
+                    className={`flex items-center gap-1 text-sm transition-colors ${
+                      isActive(item) ? activeClass : inactiveClass
+                    }`}
+                  >
+                    {item.label}
+
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        activeDropdown === item.label
+                          ? "rotate-180 text-teal-600"
+                          : ""
+                      }`}
+                    />
+                  </button>
+                ) : (
                   <Link
                     href={item.href}
                     className={`text-sm transition-colors ${
-                      isActive(item.href)
-                        ? "font-bold bg-gradient-to-r from-[#3AB257] to-[#329ACD] bg-clip-text text-transparent"
-                        : "text-[#293E52] hover:text-teal-600 font-medium"
+                      isActive(item) ? activeClass : inactiveClass
                     }`}
                   >
                     {item.label}
                   </Link>
+                )}
 
-                  {/* Show dropdown icon only for Technologies & Crane */}
-                  {item.label === "Technologies & Crane" && (
-                    <ChevronDown
-                      className={`w-4 h-4 text-[#293E52] transition-transform duration-200 ${
-                        isDropdownOpen ? "rotate-180 text-teal-600" : ""
-                      }`}
-                    />
-                  )}
-                </div>
-
-                {/* Dropdown (Desktop) */}
+                {/* Desktop Dropdown */}
                 {item.dropdown && (
                   <div
-                    onMouseEnter={() => setIsDropdownOpen(true)}
-                    onMouseLeave={() => setIsDropdownOpen(false)}
-                    className={`absolute left-0 mt-0 bg-white border border-gray-200 rounded-lg shadow-lg transition-all duration-200 ${
-                      isDropdownOpen ? "opacity-100 visible" : "opacity-0 invisible"
+                    className={`absolute top-full left-0 w-52 bg-white border border-gray-200 rounded-lg shadow-lg transition-all duration-200 ${
+                      activeDropdown === item.label
+                        ? "opacity-100 visible translate-y-0"
+                        : "opacity-0 invisible -translate-y-2 pointer-events-none"
                     }`}
                   >
-                    <div className="flex flex-col py-2 w-52">
+                    <div className="flex flex-col py-2">
                       {item.dropdown.map((subItem) => (
                         <Link
-                          key={subItem.label}
+                          key={subItem.href}
                           href={subItem.href}
-                          className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-teal-600"
+                          onClick={() => setActiveDropdown(null)}
+                          className={`px-4 py-2 text-sm transition-colors hover:bg-gray-100 hover:text-teal-600 ${
+                            pathname === subItem.href
+                              ? "text-teal-600 font-semibold bg-gray-50"
+                              : "text-gray-700"
+                          }`}
                         >
                           {subItem.label}
                         </Link>
@@ -104,6 +151,7 @@ export function Navbar() {
                     </div>
                   </div>
                 )}
+
               </div>
             ))}
           </div>
@@ -111,77 +159,97 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <div className="xl:hidden">
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              type="button"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              onClick={() => {
+                setIsOpen(!isOpen)
+                setMobileDropdown(null)
+              }}
               className="text-gray-700 p-2 hover:bg-gray-100 rounded-md transition-colors"
             >
               {isOpen ? (
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                <X className="h-6 w-6" />
               ) : (
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
+                <Menu className="h-6 w-6" />
               )}
             </button>
           </div>
+
         </div>
 
         {/* Mobile Navigation */}
         <div
-          className={`xl:hidden fixed top-20 right-0 w-full bg-white border-t border-gray-200 transition-all duration-300 ease-in-out ${
-            isOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+          className={`xl:hidden fixed top-20 left-0 right-0 bg-white border-t border-gray-200 shadow-lg transition-all duration-300 ease-in-out max-h-[calc(100dvh-5rem)] overflow-y-auto ${
+            isOpen
+              ? "translate-x-0 opacity-100 visible"
+              : "translate-x-full opacity-0 invisible pointer-events-none"
           }`}
         >
           <div className="pb-4 flex flex-col gap-2 pt-4">
             {navItems.map((item) => (
               <div key={item.label} className="flex flex-col">
-                <div
-                  className="flex justify-between items-center px-4 py-2"
-                  onClick={() =>
-                    item.dropdown
-                      ? setIsDropdownOpen(isDropdownOpen === item.label ? false : item.label)
-                      : setIsOpen(false)
-                  }
-                >
+
+                {item.dropdown ? (
+                  <button
+                    type="button"
+                    aria-expanded={mobileDropdown === item.label}
+                    onClick={() =>
+                      setMobileDropdown(
+                        mobileDropdown === item.label ? null : item.label
+                      )
+                    }
+                    className={`flex justify-between items-center px-4 py-2 text-sm w-full text-left ${
+                      isActive(item) ? activeClass : inactiveClass
+                    }`}
+                  >
+                    {item.label}
+
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        mobileDropdown === item.label
+                          ? "rotate-180"
+                          : ""
+                      }`}
+                    />
+                  </button>
+                ) : (
                   <Link
                     href={item.href}
-                    className={`text-sm font-medium ${
-                      isActive(item.href)
-                        ? "font-bold bg-gradient-to-r from-teal-500 to-blue-600 bg-clip-text text-transparent"
-                        : "text-gray-700 hover:text-teal-600"
+                    onClick={closeMobileMenu}
+                    className={`px-4 py-2 text-sm ${
+                      isActive(item) ? activeClass : inactiveClass
                     }`}
                   >
                     {item.label}
                   </Link>
-                  {item.dropdown && (
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform ${
-                        isDropdownOpen === item.label ? "rotate-180" : ""
-                      }`}
-                    />
-                  )}
-                </div>
+                )}
 
                 {/* Mobile Dropdown */}
-                {item.dropdown && isDropdownOpen === item.label && (
-                  <div className="flex flex-col pl-8">
+                {item.dropdown && mobileDropdown === item.label && (
+                  <div className="flex flex-col pl-8 bg-gray-50">
                     {item.dropdown.map((subItem) => (
                       <Link
-                        key={subItem.label}
+                        key={subItem.href}
                         href={subItem.href}
-                        onClick={() => setIsOpen(false)}
-                        className="py-2 text-sm text-gray-600 hover:text-teal-600"
+                        onClick={closeMobileMenu}
+                        className={`py-3 text-sm hover:text-teal-600 ${
+                          pathname === subItem.href
+                            ? "text-teal-600 font-semibold"
+                            : "text-gray-600"
+                        }`}
                       >
                         {subItem.label}
                       </Link>
                     ))}
                   </div>
                 )}
+
               </div>
             ))}
           </div>
         </div>
+
       </div>
     </nav>
   )
