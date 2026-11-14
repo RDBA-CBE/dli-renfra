@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { ArrowLeft, ArrowRight } from "lucide-react"
+import { ArrowLeft, ArrowRight, CircleCheck } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { axiosGet, BASE_URL } from "@/lib/api"
@@ -234,6 +234,93 @@ function ProjectsSection({ projects }) {
         ))}
       </div>
     </div>
+  );
+}
+
+const installationMethodology = [
+  {
+    title: "Site Planning",
+    description:
+      "Our team manages all aspects of site assessment and planning to ensure optimal wind farm installation and maximum energy output.",
+  },
+  {
+    title: "Material Inspection",
+    description:
+      "We conduct thorough inspection and testing to ensure all materials meet required quality and compliance standards.",
+  },
+  {
+    title: "Unloading",
+    description:
+      "Safe and efficient unloading of all WTG components at the storage yard.",
+  },
+  {
+    title: "Mechanical Erection",
+    description:
+      "Installation of all types of WTG towers, including lattice and tubular towers.",
+  },
+  {
+    title: "Electro-Mechanical Activity",
+    description:
+      "Complete execution of all electro-mechanical activities required for WTG installation.",
+  },
+  {
+    title: "Quality Auditing",
+    description:
+      "Punch-point checks, inspections, and final quality verification to ensure error-free project completion.",
+  },
+];
+
+const installationMethodologyImages = [
+  { src: "/images/new/ins-1.jfif", alt: "Wind turbine blade installation" },
+  { src: "/images/new/ins-2.jfif", alt: "Wind turbine installation work" },
+  { src: "/images/new/ins-3.jfif", alt: "Wind turbine tower erection" },
+  { src: "/images/new/ins-4.jfif", alt: "Wind turbine installation site" },
+];
+
+function InstallationMethodologySection() {
+  return (
+    <section className="my-12 rounded-xl bg-[#F6F6F6] px-4 py-8 sm:px-6 lg:px-8">
+      <h2 className="mb-6 text-2xl font-bold text-[#293E52] sm:text-3xl">
+        Installation Methodology
+      </h2>
+
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {installationMethodology.map((step, index) => (
+          <article
+            key={step.title}
+            className="rounded-lg border border-gray-200 bg-white p-5"
+          >
+            <div className="mb-3 flex items-center gap-2 text-[#329ACD]">
+              <CircleCheck className="h-5 w-5 shrink-0 text-[#3AB257]" aria-hidden="true" />
+              <span className="text-sm font-bold">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+            </div>
+            <h3 className="text-lg font-bold text-[#293E52]">{step.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-[#293E52] sm:text-base">
+              {step.description}
+            </p>
+          </article>
+        ))}
+      </div>
+
+      <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
+        {installationMethodologyImages.map((image) => (
+          <div
+            key={image.src}
+            className="relative h-36 overflow-hidden rounded-lg sm:h-60"
+          >
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 280px"
+              className="object-cover"
+            />
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -477,6 +564,11 @@ if (error || !solution) {
   );
 }
 
+const isNewWtgInstallation = solution.title
+  ?.trim()
+  .toLowerCase()
+  .startsWith("new wtg installation");
+
 // EMPTY SECTIONS
 if (orderedSections.length === 0) {
   return (
@@ -485,9 +577,15 @@ if (orderedSections.length === 0) {
         title={solution?.title}
         bgImage={solution?.innerBannerImage}
       />
-      <div className="w-full py-20 text-center text-[#293E52] text-lg font-semibold">
-        No Content Available
-      </div>
+      {isNewWtgInstallation ? (
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <InstallationMethodologySection />
+        </div>
+      ) : (
+        <div className="w-full py-20 text-center text-[#293E52] text-lg font-semibold">
+          No Content Available
+        </div>
+      )}
     </>
   );
 }
@@ -621,6 +719,7 @@ if (tag === "p")
       {/* ALL CONTENT SECTIONS */}
       {orderedSections.map((sec, i) => renderSection(sec, i))}
 
+      {isNewWtgInstallation && <InstallationMethodologySection />}
 
       {projectData.length > 0 ? (
         <div className="mt-12">

@@ -2,6 +2,7 @@
 
 import { useState,useEffect } from "react";
 import { axiosGet,BASE_URL } from "@/lib/api";
+import WhyChoose from "./WhyChoose";
 
 export default function AboutLayout() {
   const processItems = [
@@ -64,10 +65,13 @@ export default function AboutLayout() {
 
           {/* Right: Content Paragraphs */}
           <div className="px-6 py-2 md:p-8 space-y-3 text-[#293E52]">
+             <p className="mt-2 text-5xl font-bold text-[#293E52] md:text-6xl">
+              2008
+            </p>
             <p>
              {/* At Derrick Lifters India Pvt Ltd (DLI), we have pioneered a safer, faster, and more cost-effective approach to complex wind turbine installations and maintenance. Our unique expertise lies in the application of our patented advanced Derrick crane lifting solutions for WTG- Major Components Replacements, WTG installations, and refurbishments. we provide the robust lifting capabilities you need to swiftly restore full operational capacity and keep your clean energy flowing. */}
 
-             Our Renewable Sector began its journey in 2008
+             Our Renewable Sector began its journey 
 and has since grown into a leading renewable energy
 solutions provider, delivering Wind, Solar, and Energy
 Storage projects across India and Sri Lanka. With
@@ -88,6 +92,8 @@ Training Provider
           </div>
         </div>
       </div>
+
+      
 
       
 
@@ -117,19 +123,60 @@ Training Provider
   </div>
 </div>
 
+<section className="mt-16 rounded-lg bg-[#F4F7F9] p-6 md:p-10 lg:p-12 mb-18">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-[1fr_2fr] md:gap-10">
+          <div className="flex flex-col justify-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#329ACD]">
+              Established
+            </p>
+            <p className="mt-2 text-5xl font-bold text-[#293E52] md:text-6xl">
+              2024
+            </p>
+          </div>
 
+          <div className="space-y-4 text-[#293E52]">
+            <h2 className="text-2xl font-semibold md:text-3xl">
+              An independent wind energy service provider
+            </h2>
+            <p className="leading-relaxed">
+              Derrick Lifters India Pvt. Ltd. (DLI) was established in 2024 as
+              an independent wind energy service provider, specializing in WTG
+              installation and major component replacement using advanced
+              Derrick lifting systems, crane-less technology, and cranes.
+            </p>
+            <p className="leading-relaxed">
+              DLI is built on engineering innovation, developing proprietary
+              lifting solutions that ensure safe, efficient, and cost-effective
+              handling of wind turbine components. The company executes WTG
+              installation, de-erection, and re-erection services with high
+              precision and strict safety standards.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      {/* Row 2: Center Title */}
-      <div className="pb-6 md:p-8 lg:p-8 text-center">
+      <div className="pb-10  ">
         <h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-[#293E52]">
           Why choose us?
         </h3>
       </div>
 
-      {/* Row 3: Image and Content */}
-      <div>
+      <WhyChoose/>
+
+
+
+
+      {/* Row 2: Center Title */}
+      {/* <div className="pb-6 md:p-8 lg:p-8 text-center">
+        <h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-[#293E52]">
+          Why choose us?
+        </h3>
+      </div> */}
+
+      
+      {/* <div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-          {/* Left: Image */}
+         
           <div className="bg-muted min-h-64 md:min-h-80 flex items-center justify-center">
             <div className="w-full h-full bg-gradient-to-br from-muted to-muted-foreground/10 rounded flex items-center justify-center">
               <img
@@ -140,7 +187,7 @@ Training Provider
             </div>
           </div>
 
-          {/* Right: Content Lines */}
+          
           <div className="p-6 md:p-8 space-y-3 leading-relaxed text-[#293E52]">
             <p className="leading-relaxed text-center lg:text-left">
               DLI is part of Speed Team Group, a fast-growing group of companies in the renewable landscape providing a boutique of solutions and services ranging from wind and solar project development, manufacturing of solar panels and BESS, construction of renewable projects, sourcing of electrical equipment and operation and maintenance. Speed Team Group focuses on delivering innovation, sustainability, and excellence in energy solutions through its businesses. 
@@ -151,10 +198,10 @@ Training Provider
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      {/* Row 4: Process Grid */}
-      <div className="border border-border mt-6">
+      
+      <div className="border border-border !mt-20">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
           {solutionsCard.map((item, index) => (
             <div
@@ -174,6 +221,8 @@ Training Provider
           ))}
         </div>
       </div>
+
+      
     </div>
   )
 }

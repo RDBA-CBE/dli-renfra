@@ -7,22 +7,22 @@ const processItems = [
   {
     id: 1,
     imgSrc: "/images/why1.svg",
-    title: "Reduces Downtime by up to 30%",
+    title: "MULTI-BRAND EXPERTISE",
   },
   {
     id: 2,
     imgSrc: "/images/why4.svg",
-    title: "15–20% Improvements in Timelines",
+    title: "HIGH PRECISION & SAFETY",
   },
   {
     id: 3,
     imgSrc: "/images/why3.svg",
-    title: "30% Cost Savings",
+    title: "PATENTED CERTIFIED",
   },
   {
     id: 4,
     imgSrc: "/images/why2.svg",
-    title: "Lifting Capacities Ranging from 10T to 30T",
+    title: "SKILLED WORKFORCE",
   },
 ]
 
@@ -144,8 +144,8 @@ function ProcessCircle({ imgSrc, title }) {
       </motion.div>
 
       {/* Title */}
-      <p className="text-sm md:text-base font-semibold text-[#293E52] text-center leading-snug max-w-[160px] break-words">
-        {title}
+      <p className="text-sm md:text-base font-semibold text-[#293E52] text-center leading-snug max-w-[160px] break-words capitalize">
+        {(title).toLowerCase()}
       </p>
     </motion.div>
   )

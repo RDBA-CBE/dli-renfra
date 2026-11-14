@@ -231,12 +231,9 @@ const tabsData = [
       {
         intro: "Dear Stakeholder,",
         content:
-          "The wind energy sector in India is at a pivotal moment. With ambitious national targets and a rapidly expanding fleet of assets (wind turbines), we are witnessing a transformative shift towards a cleaner, more sustainable energy future, as well as economical maintenance solutions.",
+          "24+ Years of renewable energy experience, Mr. Muthuraj Periyasamy founded Service Company in 2008 and has since built it into a comprehensive Wind and Solar solutions group. His strategic vision, technical insight, and strong focus on safety and quality have established the company as a trusted name known for reliable execution and sustainable growth.",
       },
-      {
-        content:
-          "However, with this incredible expansion comes a critical need for robust, reliable, and forward-thinking service providers. The success of every wind project, from a small-scale installation to a large wind farm, hinges on its operational excellence and uptime. In a market where competitive bidding is the norm and profitability is directly tied to generation; unreliable service and lengthy component replacement cycles are no longer acceptable. Furthermore, the imperative to manage aging turbines to maximize energy output and the new government. mandates for quality components are creating a new set of complex challenges for project developers and operators. This is where Derrick Lifters India, a part of Speed Team group of companies is creating a breakthrough in the market. At DLI, we've pioneered a safer, faster, and more cost-effective approach to complex wind turbine maintenance.",
-      },
+      
     ],
   },
   {
@@ -251,24 +248,9 @@ const tabsData = [
       {
         intro: "Dear Stakeholder,",
         content:
-          "We are not simply a service provider; we are your strategic partner in maximizing asset value aimed to considerable reduce your maintenance costs by atleast 40%. Our services are built on a deep, ground-up understanding of the unique dynamics of the Indian wind energy landscape. We have developed a comprehensive suite of solutions for wind turbine installation and component replacement that directly addresses the industry's most pressing pain points",
+          "21+ Years of expertise in Wind and Solar turnkey projects, Mr.Jayendran Periyasamy combines deep technical knowledge with strong techno-commercial leadership. He has successfully led complex installations, strengthened operational efficiency, and driven innovative, customer-focused renewable energy solutions with consistent quality.",
       },
-      {
-        content:
-          "Seamless Installation: Our highly skilled teams ensure that every new turbine is installed with precision and efficiency, minimizing delays and maximizing the speed at which it can begin generating revenue.",
-      },
-      {
-        content:
-          "Reliable Component Replacement: We understand the critical importance of a secure and timely supply chain. Our expertise in sourcing and replacing major components, such as Single Blade, Blade Bearing/PressurePlate/Pitch Plate, Main Shaft, Gear Box, Generator, Transformer and cooler; ensures that downtime is kept to an absolute minimum, safeguarding your investment against supply bottlenecks and high import costs.",
-      },
-      {
-        content:
-          "Operational Excellence: Our commitment extends beyond simple to replace the Major Component. We use advanced diagnostic tools and a proactive, data-driven approach to replace the major Component Replacement, helping to identify potential issues before they cause costly failures. This predictive model, combined with our timely service, ensures that your turbines perform at their peak, year-round.",
-      },
-      {
-        content:
-          "We are proud to be at the forefront of this green revolution. At DLI, we are dedicated to setting new benchmarks for service, reliability, and technical expertise in the renewable energy market, and the several patents that our solutions have received are a testimony to our commitment!",
-      },
+     
     ],
   },
   {
@@ -350,7 +332,7 @@ export default function ExecutiveMessageTabs() {
                           src={item.src}
                           alt={item.alt}
                           fill
-                          className="object-cover p-3"
+                          className="object-cover p-3 h-auto"
                         />
                       </div>
                       <div className="p-4 text-center">
@@ -367,12 +349,12 @@ export default function ExecutiveMessageTabs() {
                 {/* Left Side - Image and Info */}
                 <div className="flex flex-col items-center lg:items-start h-full">
                   <div className="bg-white rounded-2xl overflow-hidden shadow-xl w-full h-full flex flex-col">
-                    <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-full">
+                    <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-98">
                       <Image
                         src={activeContent.image}
                         alt={activeContent.name}
                         fill
-                        className="object-cover p-3 rounded-2xl"
+                        className="object-cover p-3 rounded-2xl "
                       />
                     </div>
                     <div className="p-3 flex flex-col justify-center flex-grow">

@@ -30,7 +30,9 @@ export function TabSolutionSection() {
       const response = await axiosGet.get(
         "masters/solutions/get/?web_sts=1&active_status=1&order_type=asc&order_field=created_date"
       );
-      const tabs = response.data.data;
+      const tabs = response.data.data.filter(
+        (tab) => tab.title?.trim().toLowerCase() !== "crane rentals"
+      );
       setTabsData(tabs);
 
       if (tabs.length > 0) {

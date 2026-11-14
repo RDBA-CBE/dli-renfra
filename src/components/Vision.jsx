@@ -11,7 +11,7 @@ export default function MissionVisionSection() {
   }
 
   return (
-    <section className="w-full bg-[#F6F6F6]">
+    <section className="w-full bg-[#F6F6F6] mt-8">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-6 lg:gap-8">
 
