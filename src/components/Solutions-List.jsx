@@ -13,7 +13,7 @@ export default function SolutionsPageList() {
     {
       id: "4",
       icon: "/images/s4.svg",
-      title: "Crane Rentals",
+      title: "Conventional Crane Rentals",
       viewDetail: "View Details",
       link: "/solutions/crane-rentals",
       description:
@@ -74,20 +74,20 @@ export default function SolutionsPageList() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="mb-4 flex justify-center">
+        {/* <div className="mb-4 flex justify-center">
           <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white flex items-center gap-2">
             Our Solutions
             <a href="/solutions">
               <ExternalLink className="w-7 h-7 text-white" />
             </a>
           </h2>
-        </div>
+        </div> */}
 
         {/* Subtitle */}
-        <p className="mb-8 max-w-3xl text-sm sm:text-sm md:text-base lg:text-base text-white text-center mx-auto">
+        {/* <p className="mb-8 max-w-3xl text-sm sm:text-sm md:text-base lg:text-base text-white text-center mx-auto">
           Comprehensive lifting and maintenance solutions tailored for every
           stage of wind turbine life — from installation to refurbishment.
-        </p>
+        </p> */}
 
         {/* Responsive Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">

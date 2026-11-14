@@ -2,10 +2,26 @@
 import { useState, useEffect } from "react"
 import { ArrowUp } from "lucide-react"
 import { Button } from "./ui/button"
-import { axiosPost } from "@/lib/api"
+import { axiosGet, axiosPost } from "@/lib/api"
+
+const additionalSolutionLinks = [
+  {
+    title: "Conventional Crane Rentals",
+    href: "/solutions/crane-rentals",
+  },
+  {
+    title: "GWO Training",
+    href: "/solutions/gwo-training",
+  },
+  {
+    title: "Turnkey Installation Solutions",
+    href: "/solutions/turnkey-installation-solutions",
+  },
+]
 
 export default function Footer() {
   const [showScrollTop, setShowScrollTop] = useState(false)
+  const [solutions, setSolutions] = useState([])
   const [email, setEmail] = useState("")
   const [subscribed, setSubscribed] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -23,6 +39,34 @@ export default function Footer() {
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const fetchSolutions = async () => {
+      try {
+        const response = await axiosGet.get(
+          "masters/solutions/get/?web_sts=1&active_status=1&order_type=asc&order_field=created_date"
+        )
+        const solutionItems = response.data?.data
+
+        if (!Array.isArray(solutionItems)) {
+          throw new Error("Unexpected solutions response")
+        }
+
+        setSolutions(
+          solutionItems.filter(
+            (solution) =>
+              solution?.title?.trim() &&
+              solution?.data_uniq_id &&
+              solution.title.trim().toLowerCase() !== "crane rentals"
+          )
+        )
+      } catch (error) {
+        console.error("Footer solutions error:", error)
+      }
+    }
+
+    fetchSolutions()
   }, [])
 
   const scrollToTop = () => {
@@ -70,6 +114,25 @@ export default function Footer() {
   }
 }
 
+  const additionalSolutionTitles = new Set(
+    additionalSolutionLinks.map((solution) => solution.title.trim().toLowerCase())
+  )
+  const solutionLinks = [
+    ...solutions
+      .filter(
+        (solution) =>
+          !additionalSolutionTitles.has(solution.title.trim().toLowerCase())
+      )
+      .map((solution) => ({
+        key: solution.data_uniq_id,
+        title: solution.title,
+        href: `/solution-details?id=${encodeURIComponent(solution.data_uniq_id)}`,
+      })),
+    ...additionalSolutionLinks.map((solution) => ({
+      ...solution,
+      key: solution.href,
+    })),
+  ]
 
 
 
@@ -203,15 +266,16 @@ export default function Footer() {
             <div className="md:col-span-1">
               <h4 className="text-white font-semibold mb-4">Our Solution</h4>
               <ul className="space-y-2">
-                {["Major Component Replacements", "New WTG Installations", "Refurbishments", "Crane Rentals", "Breakdown Mainenance"].map(
-                  (solution) => (
-                    <li key={solution}>
-                      <a href="/solutions" className="text-white hover:text-green-400 transition-colors text-sm">
-                        {solution}
-                      </a>
-                    </li>
-                  ),
-                )}
+                {solutionLinks.map((solution) => (
+                  <li key={solution.key}>
+                    <a
+                      href={solution.href}
+                      className="text-white hover:text-green-400 transition-colors text-sm"
+                    >
+                      {solution.title}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -220,11 +284,25 @@ export default function Footer() {
               <h4 className="text-white font-semibold mb-4">Contact Us</h4>
               <div className="space-y-4">
                 {/* Head Office */}
-                <div className="flex gap-3">
-                  <img src="/images/location.svg" alt="Head Office" className="w-5 h-5 mt-0.5" />
+                <div className="flex flex-col  gap-3">
+                  <div className="flex  gap-3">
+                     <img src="/images/location.svg" alt="Head Office" className="w-5 h-5 mt-0.5" />
                   <div>
                     <p className="text-white text-sm font-medium">Head Office</p>
                     <p className="text-white text-sm">No: 2-7-88, Tenkasi Road, Elathur, Tenkasi - 627803, Tamil Nadu, India.</p>
+                  </div>
+                  </div>
+                 
+                  <div className="flex  gap-3">
+                     <img src="/images/location.svg" alt="Head Office" className="w-5 h-5 mt-0.5" />
+                  <div>
+                    <p className="text-white text-sm font-medium">Corporate Office</p>
+                    <p className="text-white text-sm">Indiqube Ocean Bay, 5th Floor,<br />
+        A-19 & 20, SIDCO Thiru Vi Ka<br />
+        Industrial Estate, Guindy,<br />
+        Chennai - 600032,<br />
+        Tamil Nadu, India.</p>
+                  </div>
                   </div>
                 </div>
 
@@ -233,7 +311,12 @@ export default function Footer() {
                   <img src="/images/new-call.svg" alt="Call Us" className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="text-white text-sm font-bold">Call Us</p>
-                    <p className="text-white text-sm">+91 99431 15133</p>
+                    <p className="text-white text-sm">
+  <a href="tel:+919943115133">+91 99431 15133</a>
+</p>
+<p className="text-white text-sm">
+  <a href="tel:+919965515165">+91 99655 15165</a>
+</p>
                   </div>
                 </div>
 
@@ -242,8 +325,13 @@ export default function Footer() {
                   <img src="/images/mail.svg" alt="Email Us" className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="text-white text-sm font-medium">Email Us</p>
-                    <p className="text-white text-sm">support@gmail.com</p>
-                  </div>
+                   <p className="text-white text-sm">
+  <a href="mailto:admin@derricklifters.com">admin@derricklifters.com</a>
+</p>
+<p className="text-white text-sm">
+  <a href="mailto:sm@derricklifters.com">sm@derricklifters.com</a>
+</p>
+                  </div> 
                 </div>
               </div>
             </div>

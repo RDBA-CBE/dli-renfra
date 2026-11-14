@@ -28,7 +28,28 @@ export function ContactInfo() {
       <p className="text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] text-muted-[#293E52]">
         No: 2-7-88, Tenkasi Road, Elathur, <br />
         Tenkasi - 627803, Tamil Nadu, India.
-</p>
+      </p>
+    </div>
+  </div>
+
+  {/* Corporate Office */}
+  <div className="flex gap-4">
+    <div className="flex-shrink-0">
+      <img
+        src="/images/con-loc.png"
+        alt="Location Icon"
+        className="h-6 w-6 object-contain"
+      />
+    </div>
+    <div>
+      <h3 className="font-semibold text-[#293E52]">Corporate Office</h3>
+      <p className="text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] text-muted-[#293E52]">
+        Indiqube Ocean Bay, 5th Floor,<br />
+        A-19 & 20, SIDCO Thiru Vi Ka<br />
+        Industrial Estate, Guindy,<br />
+        Chennai - 600032,<br />
+        Tamil Nadu, India.
+      </p>
     </div>
   </div>
 
@@ -44,6 +65,7 @@ export function ContactInfo() {
     <div>
       <h3 className="font-semibold text-[#293E52]">Call Us</h3>
       <p className="text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] text-muted-[#293E52]">+91 99431 15133</p>
+      <p className="text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] text-muted-[#293E52]">+91 99655 15165</p>
     </div>
   </div>
 
@@ -58,7 +80,8 @@ export function ContactInfo() {
     </div>
     <div>
       <h3 className="font-semibold text-[#293E52]">Email Us</h3>
-      <p className="text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] text-muted-[#293E52]">support@gmail.com</p>
+      <p className="text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] text-muted-[#293E52]">admin@derricklifters.com</p>
+      <p className="text-[12px] sm:text-[12px] md:text-[12px] lg:text-[14px] text-muted-[#293E52]">sm@derricklifters.com</p>
     </div>
   </div>
 </div>
