@@ -109,7 +109,7 @@ export function Navbar() {
                       className={`w-4 h-4 transition-transform duration-200 ${
                         activeDropdown === item.label
                           ? "rotate-180 text-teal-600"
-                          : ""
+                          : "text-[#293E52]"
                       }`}
                     />
                   </button>
