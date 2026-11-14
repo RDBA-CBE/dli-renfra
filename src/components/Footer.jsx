@@ -181,6 +181,7 @@ export default function Footer() {
                   { label: "Solutions", href: "/solutions" },
                   { label: "Technologies", href: "/technologies" },
                   { label: "Crane-Models", href: "/crane-models" },
+              
 
                   { label: "Projects", href: "/projects" },
                   { label: "IMS @ DLI", href: "/ims@dli" },
@@ -202,7 +203,7 @@ export default function Footer() {
             <div className="md:col-span-1">
               <h4 className="text-white font-semibold mb-4">Our Solution</h4>
               <ul className="space-y-2">
-                {[" Major Component Replacements", "New WTG Installations", "Refurbishments", "Crane Rentals", "Breakdown Mainenance"].map(
+                {["Major Component Replacements", "New WTG Installations", "Refurbishments", "Crane Rentals", "Breakdown Mainenance"].map(
                   (solution) => (
                     <li key={solution}>
                       <a href="/solutions" className="text-white hover:text-green-400 transition-colors text-sm">

@@ -29,11 +29,12 @@ export function Navbar() {
       dropdown: [
         { label: "Technologies", href: "/technologies" },
         { label: "Crane Models", href: "/crane-models" },
+        { label: "Lifting Technology", href: "/lifting-solutions" },
       ],
     },
     { label: "Why DLI", href: "/why-dli" },
     { label: "Solutions", href: "/solutions" },
-    { label: "Lifting Technology", href: "/lifting-solutions" },
+    
     { label: "Projects", href: "/projects" },
     { label: "IMS @ DLI", href: "/ims@dli" },
     { label: "News & Media", href: "/news" },
