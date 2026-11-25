@@ -37,7 +37,7 @@ export function Navbar() {
     
     { label: "Projects", href: "/projects" },
     { label: "IMS @ DLI", href: "/ims@dli" },
-    { label: "News & Media", href: "/news" },
+   // { label: "News & Media", href: "/news" },
     { label: "Career", href: "/career" },
     { label: "Corporate", href: "/corporate" },
   ]

@@ -1,5 +1,6 @@
 import InnerBanner from "@/components/Inner-Banner";
 import MainCareerSection from "@/components/Main-Career";
+import CareerForm from "@/components/Career-Form";
 
 
 export default function Career() {
@@ -8,6 +9,7 @@ export default function Career() {
 
 <InnerBanner title="Career" bgImage="/images/career-bg.svg" />
 <MainCareerSection />
+<CareerForm />
 </>
   );
 }

@@ -85,7 +85,7 @@ Wind & Solar turnkey project execution, WTG and Solar
 O&M, major component replacement, multi-brand
 spares supply, WTG component refurbishment,
 customized lifting solutions, and specialized technical
-services across multiple locations. Speed Team Group is
+services across multiple locations. Derrick Lifters India is
 certified with ISO 9001, ISO 14001, ISO 45001, CECertified Lifting Technology, and is a GWO Certified
 Training Provider
             </p>
@@ -190,7 +190,7 @@ Training Provider
           
           <div className="p-6 md:p-8 space-y-3 leading-relaxed text-[#293E52]">
             <p className="leading-relaxed text-center lg:text-left">
-              DLI is part of Speed Team Group, a fast-growing group of companies in the renewable landscape providing a boutique of solutions and services ranging from wind and solar project development, manufacturing of solar panels and BESS, construction of renewable projects, sourcing of electrical equipment and operation and maintenance. Speed Team Group focuses on delivering innovation, sustainability, and excellence in energy solutions through its businesses. 
+              DLI is part of Speed Team Group, a fast-growing group of companies in the renewable landscape providing a boutique of solutions and services ranging from wind and solar project development, manufacturing of solar panels and BESS, construction of renewable projects, sourcing of electrical equipment and operation and maintenance. Derrick Lifters India focuses on delivering innovation, sustainability, and excellence in energy solutions through its businesses. 
             </p>
 
             <p className="leading-relaxed text-center lg:text-left"> 

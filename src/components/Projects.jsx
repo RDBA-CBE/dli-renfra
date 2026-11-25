@@ -3,6 +3,7 @@
 import { useState,useEffect } from "react"
 import { MapPin } from "lucide-react"
 import { axiosGet, BASE_URL } from "@/lib/api";
+import InteractiveProjectsMap from "@/components/InteractiveProjectsMap";
 
 
 
@@ -13,6 +14,10 @@ export default function ProjectsSection() {
   const [projectData, setProjectData] = useState([]);
    const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
+   const activeTabTitle = masterTitle.find((tab) => tab.data_uniq_id === activeTab)?.title || "";
+   const normalizedTabTitle = activeTabTitle.trim().toLowerCase();
+   const showMap = normalizedTabTitle.includes("major component replacement")
+     || normalizedTabTitle.includes("new wtg installation");
 
   console.log(activeTab, "activeTab");
 
@@ -94,24 +99,6 @@ export default function ProjectsSection() {
   }
 
 
-  if (noData) {
-    return (
-      <section className="w-full px-4 py-12 md:px-6 lg:px-8">
-        <div className="mx-auto max-w-[1400px] text-center py-20 text-red-600 font-semibold">
-          <div className="mb-12 text-center">
-          <p className="text-sm text-[#293E52] md:text-base max-w-3xl mx-auto">
-            DLI delivers large-scale solar, wind, and storage projects
-            across India, powering a cleaner, sustainable future.{" "}
-          </p>
-        </div>
-
-          No Data Found
-        </div>
-      </section>
-    );
-  }
-
-
   return (
     <section className="w-full px-4 py-12 md:px-6 lg:px-8">
       <div className="mx-auto max-w-[1400px]">
@@ -144,7 +131,11 @@ export default function ProjectsSection() {
         </div>
 
         {/* Grid Cards Section */}
-        {projectData && (
+        {noData ? (
+          <p className="py-12 text-center font-semibold text-[#293E52]">
+            No Data Found
+          </p>
+        ) : projectData && (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
             {projectData.map((project) => (
               <div
@@ -200,6 +191,7 @@ export default function ProjectsSection() {
             ))}
           </div>
         )}
+        {showMap && <InteractiveProjectsMap title={activeTabTitle} />}
       </div>
     </section>
   );

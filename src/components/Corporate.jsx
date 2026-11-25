@@ -27,11 +27,11 @@ export function TeamCard({ title, description, image, logo, website }) {
               borderBottomRightRadius: "60px",
             }}
           >
-            <img
+            {/* <img
               src={logo || "/placeholder.svg"}
               alt={`${title} logo`}
               className="w-30 h-24 object-contain"
-            />
+            /> */}
           </div>
         </div>
 

@@ -20,7 +20,7 @@
 //       },
 //       {
 //         content:
-//           "However, with this incredible expansion comes a critical need for robust, reliable, and forward-thinking service providers. The success of every wind project, from a small-scale installation to a large wind farm, hinges on its operational excellence and uptime. In a market where competitive bidding is the norm and profitability is directly tied to generation; unreliable service and lengthy component replacement cycles are no longer acceptable. Furthermore, the imperative to manage aging turbines to maximize energy output and the new government. mandates for quality components are creating a new set of complex challenges for project developers and operators. This is where Derrick Lifters India, a part of Speed Team group of companies is creating a breakthrough in the market. At DLI, we've pioneered a safer, faster, and more cost-effective approach to complex wind turbine maintenance.",
+//           "However, with this incredible expansion comes a critical need for robust, reliable, and forward-thinking service providers. The success of every wind project, from a small-scale installation to a large wind farm, hinges on its operational excellence and uptime. In a market where competitive bidding is the norm and profitability is directly tied to generation; unreliable service and lengthy component replacement cycles are no longer acceptable. Furthermore, the imperative to manage aging turbines to maximize energy output and the new government. mandates for quality components are creating a new set of complex challenges for project developers and operators. This is where Derrick Lifters India, a part of companies is creating a breakthrough in the market. At DLI, we've pioneered a safer, faster, and more cost-effective approach to complex wind turbine maintenance.",
 //       },
 //     ],
 //   },
@@ -222,7 +222,7 @@ const tabsData = [
   {
     id: "md-message",
     label: "CMD Message",
-    image: "/images/team1.svg",
+    image: "/images/muthuraj-periyasamy.webp",
     name: "Mr. Muthuraj Periyasamy",
     designation: "Chairman & Managing Director",
     team: "Speed Team",
@@ -239,7 +239,7 @@ const tabsData = [
   {
     id: "jmd-message",
     label: "JMD Message",
-    image: "/images/team2.svg",
+    image: "/images/jayendran-periyasamy.webp",
     name: "Mr. Jayendran Periyasamy",
     designation: "Joint Managing Director",
     team: "Speed Team",
@@ -332,7 +332,7 @@ export default function ExecutiveMessageTabs() {
                           src={item.src}
                           alt={item.alt}
                           fill
-                          className="object-cover p-3 h-auto"
+                          className="object-contain object-bottom p-3"
                         />
                       </div>
                       <div className="p-4 text-center">
@@ -349,12 +349,12 @@ export default function ExecutiveMessageTabs() {
                 {/* Left Side - Image and Info */}
                 <div className="flex flex-col items-center lg:items-start h-full">
                   <div className="bg-white rounded-2xl overflow-hidden shadow-xl w-full h-full flex flex-col">
-                    <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-98">
+                    <div className="relative w-full aspect-[13/10]">
                       <Image
                         src={activeContent.image}
                         alt={activeContent.name}
                         fill
-                        className="object-cover p-3 rounded-2xl "
+                        className="object-cover object-bottom p-3 rounded-2xl"
                       />
                     </div>
                     <div className="p-3 flex flex-col justify-center flex-grow">

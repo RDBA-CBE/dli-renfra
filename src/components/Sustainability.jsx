@@ -5,7 +5,7 @@ const IMAGE_PATH = "/images/sustainability/";
 const initiatives = [
   "Driving a cleaner future through renewable energy adoption and environmentally responsible project practices.",
   "Our wind energy solutions help reduce carbon emissions, minimize environmental impact, and accelerate the global transition to sustainable power.",
-  "Through our innovative projects, Speed Team Group has achieved an annual reduction of approximately 706,630.08 metric tons of CO₂e, depending on local grid emission factors. This achievement reflects our commitment to a cleaner environment and a more sustainable future for the next generation.",
+  "Through our innovative projects, Derrick Lifters India has achieved an annual reduction of approximately 706,630.08 metric tons of CO₂e, depending on local grid emission factors. This achievement reflects our commitment to a cleaner environment and a more sustainable future for the next generation.",
 ];
 
 export default function Sustainability() {

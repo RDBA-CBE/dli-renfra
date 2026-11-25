@@ -4,18 +4,18 @@ const IMAGE_PATH = "/images/csr/";
 
 const galleryImage = {
   src: `${IMAGE_PATH}gallery.webp`,
-  alt: "DLI and Speed Team Group corporate social responsibility activities and community initiatives",
+  alt: "DLI corporate social responsibility activities and community initiatives",
 };
 
 const companies = [
-  {
-    name: "Speed MecoTronix Pvt Ltd",
-    website: "https://www.speedmtx.com",
-    websiteLabel: "www.speedmtx.com",
-    image: `${IMAGE_PATH}mecotronix.webp`,
-    description:
-      "Develops advanced lifting technology, manufactures components, and delivers R&D-driven solutions for Wind and Solar projects.",
-  },
+  // {
+  //   name: "Speed MecoTronix Pvt Ltd",
+  //   website: "https://www.speedmtx.com",
+  //   websiteLabel: "www.speedmtx.com",
+  //   image: `${IMAGE_PATH}mecotronix.webp`,
+  //   description:
+  //     "Develops advanced lifting technology, manufactures components, and delivers R&D-driven solutions for Wind and Solar projects.",
+  // },
   {
     name: "GWind Services Pvt Ltd",
     website: "https://www.gwind.in",
